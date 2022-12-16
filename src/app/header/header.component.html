@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Jwt-Learn Front</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/Home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/Admin"
+          *ngIf="userService.roleMatch(['Admin'])">Admin Dashbord</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/User"
+          *ngIf="userService.roleMatch(['User'])">User Dashbord</a>
+        </li>
+      </ul>
+      <button *ngIf="!IsLoggedIn()" type="button" class="btn btn-success" routerLink="/Login" >Login</button>
+      <button *ngIf="IsLoggedIn()"type="button" class="btn btn-danger" (click) = "logout()">Logout</button>
+    </div>
+  </div>
+  
+</nav>
+    
