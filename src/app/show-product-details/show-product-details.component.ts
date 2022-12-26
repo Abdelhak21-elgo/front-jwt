@@ -42,4 +42,6 @@ export class ShowProductDetailsComponent implements OnInit {
       }
     );
   }
+
+  showImages(element)
 }
