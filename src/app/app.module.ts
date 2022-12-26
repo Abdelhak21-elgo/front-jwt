@@ -15,6 +15,16 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_Auth/auth.guard';
 import { AuthInterceptor } from './_Auth/auth.interceptor';
 import { UserService } from './_Services/user.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { AddProductComponent } from './add-product/add-product.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { DragDirective } from './drag.directive';
+
+
 
 @NgModule({
   declarations: [
@@ -24,15 +34,22 @@ import { UserService } from './_Services/user.service';
     UserComponent,
     LoginComponent,
     HeaderComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    AddProductComponent,
+    DragDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
-
+    RouterModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatGridListModule
   ],
   providers: [
     AuthGuard,
