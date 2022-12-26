@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProductService {
-  apipath = environment.apipathback;
-  // apipath = "http://localhost:8080";
+  // apipath = environment.apipathback;
+  apipath = "http://localhost:8080";
 
   constructor(private httpclient: HttpClient) { }
 
