@@ -11,7 +11,7 @@ import { Product } from '../_Model/Product.model';
 export class ShowProductDetailsComponent implements OnInit {
   productDetails : Product[] =[];
 
-  displayedColumns: string[] = ['productId','productName', 'productDescription', 'productCurentPrice', 'productDiscountedPrice'];
+  displayedColumns: string[] = ['productId','productName', 'productDescription', 'productCurentPrice', 'productDiscountedPrice','Edit','Delet'];
   constructor( private productService : ProductService ) { }
 
   ngOnInit(): void {
@@ -23,6 +23,19 @@ export class ShowProductDetailsComponent implements OnInit {
       (response: Product[]) => {
         // console.log(response);
         this.productDetails = response;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
+  }
+
+  deleproduct(productId: any){
+    console.log(productId);
+    this.productService.deletProductDetails(productId).subscribe(
+      (response: any) => {
+        // console.log(response);
+        this.getAllProducts();
       },
       (error: HttpErrorResponse) => {
         console.log(error);

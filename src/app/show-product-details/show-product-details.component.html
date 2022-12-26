@@ -30,6 +30,26 @@
             <td mat-cell *matCellDef="let element"> {{element.productDiscountedPrice}} </td>
         </ng-container>
 
+        <!-- Edit Column -->
+        <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef> Edit </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-icon-button color="primary">
+                    <mat-icon> edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <!-- Delet Column -->
+        <ng-container matColumnDef="Delet">
+            <th mat-header-cell *matHeaderCellDef> Delet </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="warn" (click)="deleproduct(element.productId)">
+                    <mat-icon> delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
