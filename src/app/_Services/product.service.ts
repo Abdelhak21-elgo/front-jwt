@@ -7,14 +7,15 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProductService {
+  apipath = "http://localhost:8080";
 
   constructor(private httpclient: HttpClient) { }
 
   public addProduct(product : FormData){
-    return this.httpclient.post<Product>(environment.apipathback+"/addnewProduct", product);
+    return this.httpclient.post<Product>(this.apipath+"/addnewProduct", product);
   }
 
   public getAllProducts(){
-    return this.httpclient.get<Product[]>(environment.apipathback+"/getAllproducts");
+    return this.httpclient.get<Product[]>(this.apipath+"/getAllproducts");
   }
 }
