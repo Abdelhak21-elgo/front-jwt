@@ -11,7 +11,7 @@ import { Product } from '../_Model/Product.model';
 export class ShowProductDetailsComponent implements OnInit {
   productDetails : Product[] =[];
 
-  displayedColumns: string[] = ['productId','productName', 'productDescription', 'productCurentPrice', 'productDiscountedPrice','Edit','Delet'];
+  displayedColumns: string[] = ['productId','productName', 'productDescription', 'productCurentPrice', 'productDiscountedPrice','Images','Edit','Delet'];
   constructor( private productService : ProductService ) { }
 
   ngOnInit(): void {
