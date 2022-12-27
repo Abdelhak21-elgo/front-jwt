@@ -8,8 +8,8 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private userAuthServce : UserAuthService,
-        private router : Router){}
+    constructor(private userAuthServce: UserAuthService,
+        private router: Router) { }
     intercept(req: HttpRequest<any>,
         next: HttpHandler):
         Observable<HttpEvent<any>> {
@@ -18,14 +18,15 @@ export class AuthInterceptor implements HttpInterceptor {
         }
         const Token = this.userAuthServce.getToken();
 
-        req = this.addToken(req , Token);
+        if(Token) req = this.addToken(req, Token);
+        
         return next.handle(req).pipe(
             catchError(
-                (err:HttpErrorResponse) => {
+                (err: HttpErrorResponse) => {
                     console.log(err.status);
-                    if(err.status === 401){
+                    if (err.status === 401) {
                         this.router.navigate(['/Login']);
-                    }else if(err.status === 403){
+                    } else if (err.status === 403) {
                         this.router.navigate(['/Forbidden']);
                     }
                     return throwError("Some thing is wrong");
@@ -34,11 +35,11 @@ export class AuthInterceptor implements HttpInterceptor {
         );
     }
 
-    private addToken(request :HttpRequest<any>, token : string){
+    private addToken(request: HttpRequest<any>, token: string) {
         return request.clone(
             {
                 setHeaders: {
-                    Authorization : `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 }
             }
         )
