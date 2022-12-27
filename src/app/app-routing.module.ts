@@ -8,15 +8,16 @@ import { UserComponent } from './user/user.component';
 import { AuthGuard } from './_Auth/auth.guard';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
+import { ProductResolveService } from './product-resolve.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'Admin', component: AdminComponent, canActivate:[AuthGuard] , data:{roles:['Admin']} },
-  { path: 'User', component: UserComponent , canActivate:[AuthGuard] , data:{roles:['User']} },
+  { path: 'Admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
+  { path: 'User', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
   { path: 'Login', component: LoginComponent },
   { path: 'Forbidden', component: ForbiddenComponent },
-  { path: 'AddProduct', component: AddProductComponent, canActivate:[AuthGuard] , data:{roles:['Admin']} },
-  { path: 'ShowProductDetails', component: ShowProductDetailsComponent }
+  { path: 'AddProduct', component: AddProductComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { product: ProductResolveService } },
+  { path: 'ShowProductDetails', component: ShowProductDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } }
 ];
 
 @NgModule({
