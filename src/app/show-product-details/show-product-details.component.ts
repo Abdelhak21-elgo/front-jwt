@@ -61,4 +61,8 @@ export class ShowProductDetailsComponent implements OnInit {
       width: '600px',
     });
   }
+
+  editProductDetails(productId :any){
+    console.log(productId);
+  }
 }

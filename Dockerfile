@@ -5,7 +5,7 @@ COPY package.json package-lock.json /app/
 RUN npm install
 COPY . /app
 ARG configuration=production
-RUN npm run build -- --outputPath=./dist/out --configuration $configuration
+RUN npm run build -- --outputPath=./dist/out
 
 ### STAGE 2 : RUN ### 
 FROM nginx:1.17-alpine
