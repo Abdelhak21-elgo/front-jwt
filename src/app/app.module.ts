@@ -27,6 +27,7 @@ import { ShowProductDetailsComponent } from './show-product-details/show-product
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { ShowProductImageDialogComponent } from './show-product-image-dialog/show-product-image-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -57,7 +58,8 @@ import { ShowProductImageDialogComponent } from './show-product-image-dialog/sho
     MatInputModule,
     MatGridListModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,
