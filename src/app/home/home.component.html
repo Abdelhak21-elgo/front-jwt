@@ -9,13 +9,13 @@
                     <p><b>{{p.productName}}</b></p>
                 </div>
                 <div class="mt-2">
-                    <p style="white-space: inherit; height: 50px; width: 228px; overflow: hidden; text-overflow: ellipsis;">{{p.productDescription}} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam explicabo ut est blanditiis temporibus consectetur, et labore voluptatum hic sapiente recusandae. Illo commodi enim magni fugiat exercitationem veritatis repellendus quo!</p>
+                    <p style="white-space: inherit; height: 50px; width: 228px; overflow: hidden; text-overflow: ellipsis;">{{p.productDescription}}</p>
                 </div>
                 <div class="mt-2">
                     <b> MAD. {{p.productDiscountedPrice}} </b> &nbsp; <b style="text-decoration: line-through;"> {{p.productCurentPrice}}</b>
                 </div>
                 <div class="mt-2">
-                    <button type="button" mat-raised-button color="warn">View Details</button>
+                    <button type="button" mat-raised-button color="warn" (click)="ShowProductDetails(p.productId)">View Details</button>
                 </div>
             </div>
         </mat-grid-tile>
