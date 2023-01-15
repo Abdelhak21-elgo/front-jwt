@@ -31,7 +31,7 @@ export class BuyProdyctComponent implements OnInit {
 
     this.productDetails.forEach(
       x => this.orderDetails.orderProductQuantityList.push(
-        { prodcutId: x.productId, quantity: 1 }
+        { prodcutId: x.productId, quantity: 0 }
       )
     );
 
@@ -45,9 +45,52 @@ export class BuyProdyctComponent implements OnInit {
         console.log(resp);
         orderForm.reset();
       },
-      (err : HttpErrorResponse) => {
+      (err: HttpErrorResponse) => {
         console.log(err);
       }
     );
+  }
+
+  getproductQuantity(productId: any) {
+    return this.orderDetails.orderProductQuantityList.filter(
+      (productQuantity) => productQuantity.prodcutId === productId
+    )[0].quantity;
+  }
+
+  incrementQuantity(productId: any, incrementBy: number) {
+    const filteredProduct = this.orderDetails.orderProductQuantityList.filter(
+      (productQuantity) => productQuantity.prodcutId === productId
+    );
+    if ( filteredProduct[0].quantity >= 10 ) return ;
+    filteredProduct[0].quantity += incrementBy;
+
+  }
+
+  decrementQuantity(productId: any, decrementBy: number) {
+    const filteredProduct = this.orderDetails.orderProductQuantityList.filter(
+      (productQuantity) => productQuantity.prodcutId === productId
+    )
+    if ( filteredProduct[0].quantity <=0 ) return ;
+    filteredProduct[0].quantity -= decrementBy;
+  }
+
+  getCalculatedTotal(productId: any, productDiscountedPrice: any) {
+    return this.orderDetails.orderProductQuantityList.filter(
+      (productQuantity) => productQuantity.prodcutId === productId
+    )[0].quantity * productDiscountedPrice;
+  }
+
+  calculatGrandTotale() {
+    let grandTotal = 0;
+
+    this.orderDetails.orderProductQuantityList.forEach(
+      (productQuantity) => {
+        const price = this.productDetails.filter(
+          (product) => product.productId === productQuantity.prodcutId
+        )[0].productCurentPrice;
+        grandTotal += price * productQuantity.quantity;
+      }
+    );
+    return grandTotal;
   }
 }

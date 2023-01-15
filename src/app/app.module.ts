@@ -30,6 +30,8 @@ import { ShowProductImageDialogComponent } from './show-product-image-dialog/sho
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { BuyProdyctComponent } from './buy-prodyct/buy-prodyct.component';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 
@@ -63,7 +65,8 @@ import { BuyProdyctComponent } from './buy-prodyct/buy-prodyct.component';
     MatGridListModule,
     MatTableModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule
   ],
   providers: [
     AuthGuard,
