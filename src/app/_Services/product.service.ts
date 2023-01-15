@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../_Model/Product.model';
 import { environment } from 'src/environments/environment';
+import { OrderDetails } from '../_Model/Order-details.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,13 @@ export class ProductService {
 
   public getProductDetailsById(productId: any){
     return this.httpclient.get<Product>(this.apipath+"/getProductdetailsById/"+productId);
+  }
+
+  public getProductDetails(isSingleProductCheckout: any , productId: any){
+    return this.httpclient.get<Product[]>(this.apipath+"/getProductDetails/"+isSingleProductCheckout+"/"+productId);
+  }
+
+  public placeOrder(orderDetails: OrderDetails){
+    return this.httpclient.post(this.apipath +"/placeOrder", orderDetails);
   }
 }

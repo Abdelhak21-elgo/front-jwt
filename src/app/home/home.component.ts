@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       (error: HttpErrorResponse) => {
         console.log(error);
       }
-    );;
+    );
   }
 
   ShowProductDetails(productId:any){
