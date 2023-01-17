@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { OrderDetails } from '../_Model/Order-details.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../_Model/Product.model';
 import { ProductService } from '../_Services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -24,7 +24,8 @@ export class BuyProdyctComponent implements OnInit {
   };
 
   constructor(private activatedroute: ActivatedRoute,
-    private productservie: ProductService) { }
+    private productservie: ProductService,
+    private router : Router) { }
 
   ngOnInit(): void {
     this.productDetails = this.activatedroute.snapshot.data['productDetails'];
@@ -35,15 +36,16 @@ export class BuyProdyctComponent implements OnInit {
       )
     );
 
-    console.log(this.orderDetails);
-    console.log(this.productDetails);
+    // console.log(this.orderDetails);
+    // console.log(this.productDetails);
   }
 
   public placeOrder(orderForm: NgForm) {
     this.productservie.placeOrder(this.orderDetails).subscribe(
       (resp) => {
-        console.log(resp);
+        // console.log(resp);
         orderForm.reset();
+        this.router.navigate(["/OrderConfirmation"]);
       },
       (err: HttpErrorResponse) => {
         console.log(err);
@@ -87,7 +89,7 @@ export class BuyProdyctComponent implements OnInit {
       (productQuantity) => {
         const price = this.productDetails.filter(
           (product) => product.productId === productQuantity.prodcutId
-        )[0].productCurentPrice;
+        )[0].productDiscountedPrice;
         grandTotal += price * productQuantity.quantity;
       }
     );

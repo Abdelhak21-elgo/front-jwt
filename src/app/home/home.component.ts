@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     )
     .subscribe(
       (response: Product[]) => {
-        console.log(response);
+        // console.log(response);
         this.productDetails = response;
       },
       (error: HttpErrorResponse) => {

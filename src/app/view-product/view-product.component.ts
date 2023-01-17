@@ -15,7 +15,7 @@ export class ViewProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.product = this.activatedRoute.snapshot.data['product'];
-    console.log(this.product);
+    // console.log(this.product);
   }
 
   changeImagesindex(index : number){

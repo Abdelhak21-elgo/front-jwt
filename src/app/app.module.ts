@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { BuyProdyctComponent } from './buy-prodyct/buy-prodyct.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 
 
 
@@ -49,7 +50,8 @@ import {MatChipsModule} from '@angular/material/chips';
     ShowProductDetailsComponent,
     ShowProductImageDialogComponent,
     ViewProductComponent,
-    BuyProdyctComponent
+    BuyProdyctComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,
