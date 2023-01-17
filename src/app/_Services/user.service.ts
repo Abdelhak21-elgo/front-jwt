@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { UserAuthService } from './user-auth.service';
 
 @Injectable({
@@ -19,6 +18,10 @@ export class UserService {
   public Login(loginData: any) {
     return this.httpclient.post(this.apipath + "/authenticate", loginData
       , { headers: this.requestHeader });
+  }
+
+  public registerNewUser(registerForm: any) {
+    return this.httpclient.post(this.apipath + "/regestNewUser", registerForm);
   }
 
   public forUser() {
@@ -51,4 +54,6 @@ export class UserService {
       }
     }
   }
+
+
 }

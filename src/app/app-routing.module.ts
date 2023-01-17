@@ -13,12 +13,14 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { BuyProdyctComponent } from './buy-prodyct/buy-prodyct.component';
 import { BuyProductResolverService } from './buy-product-resolver.service';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'Admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
   { path: 'User', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
   { path: 'Login', component: LoginComponent },
+  { path: 'Register', component: RegisterComponent },
   { path: 'Forbidden', component: ForbiddenComponent },
   { path: 'AddProduct', component: AddProductComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { product: ProductResolveService } },
   { path: 'ShowProductDetails', component: ShowProductDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },

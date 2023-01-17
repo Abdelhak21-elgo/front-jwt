@@ -32,6 +32,7 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { BuyProdyctComponent } from './buy-prodyct/buy-prodyct.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -51,7 +52,8 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
     ShowProductImageDialogComponent,
     ViewProductComponent,
     BuyProdyctComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
