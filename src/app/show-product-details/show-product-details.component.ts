@@ -23,20 +23,27 @@ export class ShowProductDetailsComponent implements OnInit {
      private imageprocessingService: ImageProessingService, private router : Router) { }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.getAllProduct();
   }
 
-  public getAllProducts() {
-    this.productService.getAllProducts(this.pageNumber)
+  searchByKeyWord(searchkeyword: any) {
+    console.log(searchkeyword);
+    this.pageNumber = 0;
+    this.productDetails = [];
+    this.getAllProduct(searchkeyword);
+    }
+
+  public getAllProduct(searchKey : string = "") {
+    this.productService.getAllProducts(this.pageNumber,searchKey)
       .pipe(
         map((x: Product[], i) => x.map((product: Product) => this.imageprocessingService.createImafes(product)))
       )
       .subscribe(
         (response: Product[]) => {
           // console.log(response);
-          response.forEach(p => this.productDetails.push(p));
+          // response.forEach(p => this.productDetails.push(p));
           this.showTable=true;
-          // this.productDetails = response;
+          this.productDetails = response;
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -50,7 +57,7 @@ export class ShowProductDetailsComponent implements OnInit {
       (response: any) => {
         // console.log(response);
         
-        this.getAllProducts();
+        this.getAllProduct();
       },
       (error: HttpErrorResponse) => {
         console.log(error);
@@ -75,14 +82,17 @@ export class ShowProductDetailsComponent implements OnInit {
 
 
   loadMoreProductI(incrementBy: number) {
-    if(this.pageNumber >= 10) return ;
-    this.pageNumber+=incrementBy;
-    this.getAllProducts();
+    if (this.pageNumber < this.productDetails.length) {
+      this.pageNumber += incrementBy;
+      this.getAllProduct();
+    } else {
+      return;
     }
+  }
 
     loadMoreProductD(incrementBy: number) {
       if(this.pageNumber <= 0) return ;
       this.pageNumber-=incrementBy;
-      this.getAllProducts();
+      this.getAllProduct();
       }
 }

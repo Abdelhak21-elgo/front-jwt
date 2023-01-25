@@ -2,7 +2,10 @@ mat-grid-tile {
     border: 1px solid #eee;
     border-radius: 5px;
 }
-
+/* .responcev{
+    
+    margin: 10px;
+} */
 .home-page-product_images{
     max-width: 90%;
     max-height: 90%;
